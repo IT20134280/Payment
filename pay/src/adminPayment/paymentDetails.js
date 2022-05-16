@@ -25,12 +25,64 @@ function paymentDetails(){
         });
     };
 
-    const getPayments = () => {
+    const getPayment = () => {
         Axios.get("http://localhost:8000/PaymentDetails").then((response) => {
             setPaymentList(response.data);
         });
     };
     
+    return (
+        <div className="App">
+          <div className="information">
+            <label>Full Name:</label>
+            <input
+              type="text"
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
+            />
+            <label>Mobile:</label>
+            <input
+              type="text"
+              onChange={(event) => {
+                setPhoneNumber(event.target.value);
+              }}
+            />
+            <label>Email:</label>
+            <input
+              type="text"
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
+            />
+             
+             
+            <button onClick={addPayment}>Next</button>
+          </div>
+          <div className="employees">
+            <button onClick={getPayment}>Show </button>
+    
+            {paymentList.map((val, key) => {
+              return (
+                <div className="employee">
+                  <div>
+                    <h3>Name: {val.Name}</h3>
+                    <h3>Mobile: {val.PhoneNumber}</h3>
+                    <h3>Email: {val.Email}</h3>
+                  </div>
+                  <div>
+                    
+                    
+                     
+                   
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+    
+    export default paymentDetails;
 
-
-}
