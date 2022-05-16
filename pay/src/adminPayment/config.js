@@ -3,7 +3,9 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
+
 
 const db = mysql.createConnection({
     user: "root",
@@ -29,6 +31,17 @@ app.post("/create", (req, res) => {
     );
 });
 
+//get data
+app.get("/PaymentDetails", (req,res) => {
+    db.query("SELECT * FROM PaymentDetails", 
+    (err,result) => {
+        if(err){
+            console.log(err);
+        }else{
+            res.send(result);
+        }
+    });
+});
 
 app.listen(8000, () =>{
     console.log("working");
