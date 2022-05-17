@@ -2,7 +2,7 @@
   "name": "pay",
   "version": "0.1.0",
   "private": true,
-  "main": "./adminPayment/config.js",
+  "main": "./src/adminPayment/config.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",

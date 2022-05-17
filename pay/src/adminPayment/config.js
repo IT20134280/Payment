@@ -10,17 +10,17 @@ app.use(express.json());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "",
     database: "PaymentDetailDB",
 });
 
 app.post("/create", (req, res) => {
-    const Name = req.body.Name;
-    const PhoneNumber = req.body.PhoneNumber;
-    const Email = req.body.Email;
+    const name = req.body.name;
+    const phonenumber = req.body.phonenumber;
+    const email = req.body.email;
     db.query(
-        "INSERT INTO  PaymentDetails(Name, PhoneNumber, Email) VALUES(?,?,?)",
-        [Name, PhoneNumber, Email],
+        "INSERT INTO  PaymentDetails(name, phonenumber, email) VALUES(?,?,?)",
+        [name, phonenumber, email],
         (err, result) => {
             if(err){
                 console.log(err);

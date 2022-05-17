@@ -1,25 +1,25 @@
-import "./App.css";
+ 
 import { useState } from "react";
 import Axios from "axios";
 
-function paymentDetails(){
-    const [Name, setName] = useState("");
-    const [PhoneNumber, setPhoneNumber] = useState("");
-    const [Email, setEmail] = useState("");
+function PaymentDetails(){
+    const [name, setName] = useState("");
+    const [phonenumber, setPhoneNumber] = useState("");
+    const [email, setEmail] = useState("");
 
     const [paymentList, setPaymentList] = useState([]);
 
     const addPayment = () => {
         Axios.post("http://localhost:8000/create", {
-            Name: Name,
-            PhoneNumber: PhoneNumber,
-            Email: Email,
+            name: name,
+            phonenumber: phonenumber,
+            email: email,
         }).then(() => {
             setPaymentList([
                 ...paymentList,{
-                    Name: Name,
-                    PhoneNumber: PhoneNumber,
-                    Email: Email,
+                    name: name,
+                    phonenumber: phonenumber,
+                    email: email,
                 },
             ]);
         });
@@ -29,6 +29,10 @@ function paymentDetails(){
         Axios.get("http://localhost:8000/PaymentDetails").then((response) => {
             setPaymentList(response.data);
         });
+    };
+
+    const displayInfo = () => {
+        console.log(name + phonenumber + email);
     };
     
     return (
@@ -60,15 +64,15 @@ function paymentDetails(){
             <button onClick={addPayment}>Next</button>
           </div>
           <div className="employees">
-            <button onClick={getPayment}>Show </button>
+            <button onClick={displayInfo}>Show </button>
     
             {paymentList.map((val, key) => {
               return (
                 <div className="employee">
                   <div>
-                    <h3>Name: {val.Name}</h3>
-                    <h3>Mobile: {val.PhoneNumber}</h3>
-                    <h3>Email: {val.Email}</h3>
+                    <h3>Name: {val.name}</h3>
+                    <h3>Mobile: {val.phonenumber}</h3>
+                    <h3>Email: {val.email}</h3>
                   </div>
                   <div>
                     
@@ -84,5 +88,5 @@ function paymentDetails(){
       );
     }
     
-    export default paymentDetails;
+    export default PaymentDetails;
 
