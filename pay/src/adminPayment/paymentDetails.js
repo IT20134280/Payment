@@ -1,28 +1,46 @@
  
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
+import "./Payment.css";
+ 
+ 
 
 function PaymentDetails(){
     const [name, setName] = useState("");
     const [phonenumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
 
-    const [paymentList, setPaymentList] = useState([]);
-
-    const addPayment = () => {
-        Axios.post("http://localhost:8000/api/insert", {
+   const [paymentList, setPaymentList] = useState([]);
+    
+   const addPayment = () => {
+    Axios.post("http://localhost:8000/create", {
+      name:name,
+      phonenumber:phonenumber,
+      email:email,
+    }).then(() => {
+       setPaymentList([
+         ...paymentList,
+         {
           name:name,
-          phonenumbe:phonenumber,
+          phonenumber:phonenumber,
           email:email,
-        }).then(() => {
-          alert("successful insert");
-        });
-    };   
-     
+         },
+       ]);
+    });
+};  
+
+const getPayment = () => {
+  Axios.get("http://localhost:8000/paymentdetails").then((response) => {
+    //console.log(response.data);   
+      setPaymentList(response.data);
+
+    });
+};
+
 
     return (
-        <div className="App">
-          <div className="information">
+        <div className="form-style-1">
+          <div className="form-style-8">
             <label>Full Name:</label>
             <input
               type="text"
@@ -46,14 +64,28 @@ function PaymentDetails(){
             />
              
              
-            <button onClick={addPayment}>Next</button>
-          
-              
+            <button class="button" onClick={addPayment}>Next</button>
+           
+            </div>
+            <div>
+            <button onClick={getPayment}>Show </button>
             
-          </div>
-        </div>
-      );
-    }
-    
+            {paymentList.map((val, key) => {
+          return  (
+            <div>
+              <div>
+              <h3>Name: {val.name}</h3>
+              <h3>Mobile: {val.phonenumber}</h3>
+              <h3>Email: {val.email}</h3>
+              </div>
+            </div>
+
+          );
+        })}
+      </div>
+    </div>
+  );
+
+      } 
     export default PaymentDetails;
 
