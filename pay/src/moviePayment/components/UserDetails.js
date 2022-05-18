@@ -1,15 +1,42 @@
 import React from 'react'
+import { useState, useEffect } from "react";
+import Axios from "axios";
 
-export default function UserDetails({name, phonenumber, emails}) {
-  return (
-    <>
-    <section>
-            <ul>
-              <li><span>Customer Name-</span></li>
-              <li><span>Customer Mobile-</span></li>
-              <li><span>Customer Email-</span></li>
-            </ul>
-          </section>
-    </>
-  )
+const UserDetails = () => {
+   
+
+  const [paymentList, setPaymentList] = useState([]);
+
+     useEffect(() => {
+      
+       Axios.get("http://localhost:8000/paymentdetails").then((response) => {
+        
+           setPaymentList(response.data);
+         // console.log(response.data);
+       })
+      
+   }, []);
+ 
+
+ 
+    
+    {paymentList.map((val) => {
+      
+      return  (
+       
+        <div>
+        <div>
+        <h3>Name: {val.name}</h3>
+        <h3>Mobile: {val.phonenumber}</h3>
+        <h3>Email: {val.email}</h3>
+        </div>
+      </div>
+      
+    
+      );
+       
+      })}
+    
+  
 }
+export default UserDetails;

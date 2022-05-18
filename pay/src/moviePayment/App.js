@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookingDetails from "./components/BookingDetails";
 import Dates from "./components/Dates";
 import Footer from "./components/Footer";
@@ -8,6 +8,10 @@ import Notes from "./components/Notes";
 import UserDetails from "./components/UserDetails";
 
 const App = () => {
+  
+ 
+
+   
     const [showInvoice, setShowInvoice] = useState(false);
 
     const handlePrint = () => {
@@ -17,31 +21,32 @@ const App = () => {
         <>
             <main>
                 {showInvoice ? (
-                <div>
-                {/*header */}
-                <Header />
+                    <div>
+                        {/*header */}
+                        <Header />
 
-                {/*booking details */}
-                <BookingDetails />
+                        {/*booking details */}
+                        <BookingDetails />
 
-                {/*user details */}
-                <UserDetails />
+                        {/*user details */}
+                        <UserDetails />
 
-                {/*notes */}
-                <Notes />
 
-                {/*date */}
-                <Dates />
+                        {/*notes */}
+                        <Notes />
 
-                {/*footer */}
-                <Footer handlePrint={handlePrint}/>
-                </div>
-            ):(
-                <div>
-                <p>To Download</p>,
-                 <button onClick={() => setShowInvoice(true)}>Download</button>
-   
-                 </div>
+                        {/*date */}
+                        <Dates />
+
+                        {/*footer */}
+                        <Footer handlePrint={handlePrint} />
+                    </div>
+                ) : (
+                    <div>
+                        <p>To Download</p>,
+                        <button onClick={() => setShowInvoice(true)}>Download</button>
+
+                    </div>
                 )}
             </main>
         </>

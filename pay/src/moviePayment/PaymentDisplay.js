@@ -9,7 +9,7 @@ const PaymentDisplay = () => {
     const [email, setEmail] = useState("");
 
     const [paymentList, setPaymentList] = useState([]);
-
+// <UserDetails name={name} phonenumber={phonenumber} email={email} />
     useEffect(() => {
         Axios.get("http://localhost:8000/paymentdetails").then((response) => {
           //console.log(response.data);   
