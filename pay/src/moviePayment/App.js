@@ -29,6 +29,7 @@ const App = () => {
                         <ReactToPrint trigger={() => <button class="button">Print / Download</button>}
                             content={() => componentRef.current} />
 
+
                         <div ref={componentRef} class="formstyle">
                             {/*header */}
                             <Header handlePrint={handlePrint} />
@@ -38,7 +39,6 @@ const App = () => {
 
                             {/*user details */}
                             <UserDetails  />
-
 
                             {/*notes */}
                             <Notes />

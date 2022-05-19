@@ -36,7 +36,7 @@ const db = mysql.createConnection({
         if (err) {
             console.log(err);
           } else {
-            res.send(result);
+            res.json(result);
           
       }
     });

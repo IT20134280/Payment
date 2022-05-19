@@ -12,7 +12,8 @@ const UserDetails = () => {
        Axios.get("http://localhost:8000/paymentdetails").then((response) => {
         
            setPaymentList(response.data);
-         // console.log(response.data);
+         
+          console.log(paymentList)
        })
       
    }, []);

@@ -1,5 +1,6 @@
  
 import React, { useState } from "react";
+
  
 import Axios from "axios";
 import "./Payment.css";
@@ -8,6 +9,7 @@ import CreditCardForm from "./components/CreditCardForm";
  
 
 function PaymentDetails(){
+ 
     const [name, setName] = useState("");
     const [phonenumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
@@ -70,22 +72,10 @@ const getPayment = () => {
             <button className="button" onClick={addPayment}>Next</button>
             
             </div>
-            <div>
-            <button onClick={getPayment}>Show </button>
-            
-            {paymentList.map((val, key) => {
-          return  (
-            <div>
-              <div>
-              <h3>Name: {val.name}</h3>
-              <h3>Mobile: {val.phonenumber}</h3>
-              <h3>Email: {val.email}</h3>
-              </div>
-            </div>
+             
 
-          );
-        })}
-      </div>
+          
+       
     </div>
   );
 

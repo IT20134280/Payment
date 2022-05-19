@@ -16,6 +16,7 @@
     "react-bootstrap": "^2.4.0",
     "react-credit-cards": "^0.8.3",
     "react-icons": "^4.3.1",
+    "react-router-dom": "^6.3.0",
     "uuid": "^8.3.2"
   }
 }
