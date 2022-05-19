@@ -12,7 +12,7 @@ import  done  from "./components/img/done.png";
 
 const App = () => {
 
-    const [name, setName] = useState("");
+    
     const componentRef = useRef();
 
     const [showInvoice, setShowInvoice] = useState(false);
@@ -37,7 +37,7 @@ const App = () => {
                             <BookingDetails />
 
                             {/*user details */}
-                            <UserDetails name={name} />
+                            <UserDetails  />
 
 
                             {/*notes */}
