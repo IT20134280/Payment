@@ -1,7 +1,9 @@
  
 import React, { useState } from "react";
+ 
 import Axios from "axios";
 import "./Payment.css";
+import CreditCardForm from "./components/CreditCardForm";
  
  
 
@@ -9,6 +11,7 @@ function PaymentDetails(){
     const [name, setName] = useState("");
     const [phonenumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
+ 
 
    const [paymentList, setPaymentList] = useState([]);
     
@@ -64,8 +67,8 @@ const getPayment = () => {
             />
              
              
-            <button class="button" onClick={addPayment}>Next</button>
-           
+            <button className="button" onClick={addPayment}>Next</button>
+            
             </div>
             <div>
             <button onClick={getPayment}>Show </button>
