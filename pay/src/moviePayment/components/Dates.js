@@ -9,7 +9,7 @@ const Dates = () => {
     <article>
         <ul>
             <li>
-                <span>Payment Transaction No -</span>
+                <span>Payment Transaction No - 452316423</span>
                
                 </li>
                  
